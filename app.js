@@ -1,17 +1,14 @@
-// function add(n1: number, n2: number) {
-//     return n1 + n2;
-// }
-var add = function (n1, n2, showResult, phrase) {
-    var res = n1 + n2;
-    if (showResult) {
-        console.log(phrase + res);
-    }
-    else {
-        return n1 + n2;
-    }
+var bruno = {
+    // const bruno = {
+    name: 'Bruno',
+    age: 57
 };
-var number1 = 5; //same type as 5.0
-var number2 = 2.8;
-var printResult = true;
-var resultPhrase = 'the result is ';
-add(number1, number2, printResult, resultPhrase);
+//warning: declaration: const bruno: object = {...} would tell TS that 
+//  bruno is an object, without specifying the properties (not specific at all!!!)
+//  which means we loose the type check for properties 
+//  and we will be able to compile: bruno.nickname
+//  and we loose IDE completion for e.g. bruno.name
+//ALSO:
+//const bruno: {} = { ... } is too general too and equiv to "object"
+console.log(bruno); //{name: 'Bruno', age: 57}
+//console.log(bruno.nickname)   //app.ts:7:19 - error TS2339: Property 'nickname' does not exist on type '{ name: string; age: number; }'.

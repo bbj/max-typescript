@@ -1,23 +1,18 @@
-const add = (n1: number, n2: number, showResult: boolean, phrase: string) => {
-    let res = n1 + n2;
-    if (showResult) {
-        console.log(phrase + res);
-    } else {
-        return n1 + n2;
-    }
+// const bruno: {   //would be a correct declaration but redundant here!
+//     name: string,
+//     age: number
+// } = {
+const bruno = {
+    name: 'Bruno',
+    age: 57
 }
+//warning: declaration: const bruno: object = {...} would tell TS that 
+//  bruno is an object, without specifying the properties (not specific at all!!!)
+//  which means we loose the type check for properties 
+//  and we will be able to compile: bruno.nickname
+//  and we loose IDE completion for e.g. bruno.name
+//ALSO:
+//const bruno: {} = { ... } is too general too and equiv to "object"
 
-const number1 = 5;          // infered type: "const number1: 5"; if use let, would be "let number1: number"
-const number2 = 2.8;
-const printResult = true;
-const resultPhrase = 'the result is ';
-add(number1, number2, printResult, resultPhrase); //the result is 7.8
-
-//type inferance is here to save us to write some code
-//this is the core job of typescript to check types and yell!!
-let number3: number = 10;   // this redundant to specify ": number" as type is easily infered by TS
-let number4: number;        // here we need to specify ": number" as variable is not initialised
-number4 = "foo";            // compiler error
-let number5;                // infered type: 'let number5: any'
-number5 = 5;                // ok as number5 was infered to type 'any'
-number5 = 'foo';            // still an 'any', so no error
+console.log(bruno)              //{name: 'Bruno', age: 57}
+//console.log(bruno.nickname)   //app.ts:7:19 - error TS2339: Property 'nickname' does not exist on type '{ name: string; age: number; }'.
